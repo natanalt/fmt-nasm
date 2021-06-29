@@ -21,7 +21,7 @@ print "{w:x:some_label + 123}"
 some_label:
 ```
 
-See the [Format syntax](#Format_syntax) section for detailed description of the
+See the [Format syntax](#format-syntax) section for detailed description of the
 formatting.
 
 ### Runtime requirements
