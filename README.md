@@ -1,9 +1,10 @@
 # Formatted print macros
 This repository contains a macro file for NASM for formatted printing. Format
-strings are analyzed during assembly and have according assembly code generated
+strings are analysed during assembly and have according assembly code generated
 for them which writes matching output at runtime.
 
-Currently only 16 bit code generation is supported.
+Currently only 16 bit code generation is supported, but 32-bit support shouldn't
+be too hard to add.
 
 ## Usage
 One macro is provided, called `print`:
@@ -15,12 +16,12 @@ The macro also allows to print values of entire expressions evaluable by NASM:
 ```x86asm
 ; w: means that the following expression is a word value
 ; x: means print as hex
-print "{w:x:some_label + }"
+print "{w:x:some_label + 123}"
 
 some_label:
 ```
 
-See the [Foramt syntax](#Format_syntax) section for detailed description of the
+See the [Format syntax](#Format_syntax) section for detailed description of the
 formatting.
 
 ### Runtime requirements
@@ -67,8 +68,8 @@ Example implementation for DOS is provided in file [dosexamp.asm](dosexamp.asm).
  * {w:T:expr} - prints value of the expression as word using specified format T
    * {w:h:0x100 * 2 + 0x10} will effectively print hex 0x210
  * {b:T:expr} - same as above, but for byte values
- * {W:expr} - works the same as {w:x:expr}
- * {B:expr} - works the same as {b:x:expr}
+ * {W:expr} - works the same as {w\:x:expr}
+ * {B:expr} - works the same as {b\:x:expr}
 
 ### Configuration
 It is possible to configure behavior of the macro by defining a few values
